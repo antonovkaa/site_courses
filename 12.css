@@ -107,3 +107,68 @@ height: 420px;}
 @media(max-width:760px){.navbar{height:72px;gap:15px}.nav-link{display:none}.nav-cta{padding:10px 12px;font-size:10px;gap:7px}.brand{font-size:16px}.brand-mark{width:34px;height:34px}.hero-grid{grid-template-columns:1fr;padding:35px 0 25px;gap:10px}.hero-copy{padding-top:15px}h1{font-size:clamp(39px,9vw,57px);letter-spacing:-2.5px}.hero-description{font-size:13px}.hero-visual{min-height:370px;transform:none;margin:0 5px}.code-window{width:min(100%,420px)}.float-card-top{right:0;top:22px}.float-card-bottom{left:0;bottom:20px}.hero-orbit.orbit-one{width:330px;height:330px}.hero-orbit.orbit-two{width:390px;height:390px}.hero-bottom{gap:11px;flex-wrap:wrap;padding:15px 0;font-size:8px;letter-spacing:1px}.hero-bottom b{font-size:10px}.courses-section{padding-top:65px;padding-bottom:65px}.section-heading{display:block;margin-bottom:27px}.section-heading h2,.about-copy h2{font-size:34px}.section-heading>p{margin-top:16px}.course-grid{grid-template-columns:1fr;gap:18px}.course-art{height:200px}.course-body{padding:22px}.course-intro{min-height:0}.course-list li{font-size:11px}.course-tag{font-size:9px}.course-button{font-size:11px}.contact-band{padding:52px 6%}.contact-inner{grid-template-columns:1fr;gap:28px}.contact-copy h2{font-size:35px}.about-section{padding-top:65px;padding-bottom:65px;grid-template-columns:1fr;gap:35px}.about-visual{min-height:315px}.about-photo-frame{height:290px;max-width:430px}.experience-badge{right:4px;bottom:10px}.about-copy h2{font-size:32px}.footer{flex-wrap:wrap;gap:12px 20px}.footer p{order:3;width:100%}.footer-copy{font-size:9px}}
 @media(max-width:390px){.nav-cta{font-size:9px}.hero-actions{gap:17px}.text-link{font-size:10px}.hero-visual{min-height:335px}.code-lines{padding:20px 12px;font-size:10px}.float-card{padding:9px}.float-card-top{right:-5px}.float-card-bottom{left:-5px}.hero-bottom{letter-spacing:.5px;gap:8px}.course-body{padding:18px}.course-meta{align-items:flex-start}.duration{font-size:8px}.section-heading h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+
+
+/* Загальний стиль кнопок */
+.learn-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Курс Python — фіолетовий */
+.purple-button {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    box-shadow: 0 4px 12px rgba(109, 40, 217, 0.25);
+}
+
+/* Курс криптографії — синій */
+.blue-button {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* Курс кібербезпеки — зелений */
+.green-button {
+    background: linear-gradient(135deg, #34d399, #059669);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+}
+
+/* Ефект при наведенні */
+.learn-button:hover {
+    transform: translateY(-3px);
+}
+
+.purple-button:hover {
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.4);
+}
+
+.blue-button:hover {
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+.green-button:hover {
+    box-shadow: 0 8px 20px rgba(5, 150, 105, 0.4);
+}
+
+/* Анімація стрілки */
+.learn-button span {
+    display: inline-block;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.learn-button:hover span {
+    transform: translate(3px, -3px);
+}
