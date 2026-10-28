@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLab // Навчальний курс з кібербезпеки</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #060a12;
+      color: #e2e8f0;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.4);
+    }
+    .card-border-glow:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-12 selection:bg-cyan-500 selection:text-slate-950">
+
+  <div class="max-w-6xl mx-auto space-y-16">
+
+    <!-- HERO SECTION -->
+    <header class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+      
+      <!-- Hero Text -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 font-mono-code text-xs tracking-wider text-cyan-400 font-bold uppercase bg-cyan-950/60 border border-cyan-800/50 px-3 py-1 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          CYBERLAB // НАВЧАЛЬНИЙ КУРС
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-none">
+          Досліджуй.<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400">Аналізуй.</span><br>
+          Захищай.
+        </h1>
+
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
+          Практичний курс із кібербезпеки: досліджуйте цифрові сліди, перевіряйте інформацію та розкривайте справи в інтерактивних місіях.
+        </p>
+
+        <div class="pt-2">
+          <button type="button" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-sm transition-all duration-200 transform hover:-translate-y-0.5 glow-cyan">
+            <span>💳</span>
+            <span>Вхідний квиток до курсу</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Banner / Illustration Card -->
+      <div class="lg:col-span-5">
+        <div class="relative bg-gradient-to-b from-slate-900 to-slate-950 border border-cyan-500/30 rounded-3xl p-6 overflow-hidden group">
+          <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div class="relative z-10 space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+              </div>
+              <span class="font-mono-code text-xs text-slate-500">status: active</span>
+            </div>
+
+            <!-- Graphic Element -->
+            <div class="h-48 rounded-2xl bg-slate-900/90 border border-cyan-500/20 flex flex-col items-center justify-center p-6 text-center space-y-3 relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              
+              <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 text-2xl shadow-lg">
+                🛡️
+              </div>
+              <div class="font-mono-code font-bold text-xl text-white tracking-widest">
+                Cyber<span class="text-cyan-400">Lab</span>
+              </div>
+              <p class="text-xs text-slate-400">Interactive Cybersecurity Operations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+
+    <!-- MISSIONS SECTION -->
+    <section class="space-y-10">
+      
+      <!-- Section Header -->
+      <div class="space-y-2 border-b border-slate-800/80 pb-6">
+        <div class="font-mono-code text-xs text-cyan-400 uppercase tracking-widest flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
+          ОБЕРІТЬ СПРАВУ
+        </div>
+        <h2 class="text-3xl font-bold text-white tracking-tight">Місії CyberLab</h2>
+      </div>
+
+      <!-- CATEGORY 1 -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <h3 class="text-base font-bold text-white">Цифрові сліди й OSINT</h3>
+          <span class="font-mono-code text-xs text-slate-500 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">01-04</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Case 01 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">👤</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 01</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Хтось уже залишив сліди</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть вигаданого персонажа за нешкідливими цифровими слідами.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 02 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🔍</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 02</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">OSINT: Інтернет як база доказів</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Перевірте факти про Alex лише за відкритими джерелами.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 03 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">📍</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 03</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Де зроблено це фото?</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Визначте місце за деталями зображення та метаданими.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 04 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">📩</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 04</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Не вір повідомленню</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть фішингову атаку та підтвердіть висновок доказами.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 2 -->
+      <div class="space-y-4 pt-4">
+        <div class="flex items-center gap-3">
+          <h3 class="text-base font-bold text-white">Паролі й криптографічний захист</h3>
+          <span class="font-mono-code text-xs text-slate-500 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">05-08</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Case 05 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🔐</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 05</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Що відбувається з вашим паролем?</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть небезпечно збережені паролі у витоку бази.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 06 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">📑</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 06</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Хеш: цифровий відбиток</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Зіставте контрольні хеші й виявите змінений файл.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 07 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🔑</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 07</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Шифрування: секрет, який можна повернути</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть ключ у підказках і розшифруйте повідомлення.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 08 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">✍️</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 08</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Чи справді це написав він?</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Перевірте, який цифровий підпис не відповідає документу.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 3 -->
+      <div class="space-y-4 pt-4">
+        <div class="flex items-center gap-3">
+          <h3 class="text-base font-bold text-white">Мережі, трафік і доступ</h3>
+          <span class="font-mono-code text-xs text-slate-500 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">09-12</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Case 09 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🌐</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 09</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Що відбувається, коли відкриваєш сайт?</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Відновіть маршрут запиту в навчальному мережевому дампі.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 10 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🦈</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 10</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Wireshark: побачити невидиме</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть критичний запит у готовому файлі .pcapng.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 11 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🚪</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 11</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Порти: двері комп'ютера</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Дослідіть навчальний сервер і знайдіть потрібну службу.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 12 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🍪</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 12</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Сайт уже впізнав вас</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть помилку в моделі роботи сесії та cookies.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 4 -->
+      <div class="space-y-4 pt-4">
+        <div class="flex items-center gap-3">
+          <h3 class="text-base font-bold text-white">Вразливості та розслідування</h3>
+          <span class="font-mono-code text-xs text-slate-500 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">13-16</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Case 13 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">💉</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 13</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Коли сайт надто довіряє користувачу</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Знайдіть помилку у спеціально створеній CTF-формі.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 14 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🐍</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 14</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Python як інструмент кібердетектива</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Напишіть скрипт, що знайде аномалію у великому файлі.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 15 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🚨</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 15</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Комп'ютер поводиться дивно</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Відновіть хронологію інциденту за журналами подій.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+          <!-- Case 16 -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 card-border-glow transition duration-200">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/40 flex items-center justify-center text-sm">🏁</div>
+                <span class="font-mono-code text-[10px] text-slate-500 tracking-wider">CASE 16</span>
+              </div>
+              <h4 class="font-bold text-sm text-white">Фінальний CTF: CyberLab</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">Об'єднайте докази з попередніх місій і підготуйте звіт.</p>
+            </div>
+            <button type="button" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition text-left self-start pt-2">Перейти →</button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 pt-8 pb-4 text-center text-slate-500 text-xs font-mono-code space-y-2">
+      <p>// CyberLab Security Learning Platform</p>
+      <p class="text-slate-600">Досліджуй • Аналізуй • Захищай</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
