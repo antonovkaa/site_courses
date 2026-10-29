@@ -1,450 +1,609 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Криптографія. Подорож у часі</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Графічні шрифти — Криптографія</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #070c16;
+      background-color: #0b101b;
+      color: #e2e8f0;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Top Navigation Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      font-size: 13px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-icon {
+      width: 14px;
+      height: 14px;
+      background-color: #38bdf8;
+      border-radius: 3px;
+    }
+
+    .top-link {
       color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
     }
-    .teal-glow {
-      box-shadow: 0 0 25px -5px rgba(45, 212, 191, 0.3);
+
+    .top-link:hover {
+      color: #ffffff;
     }
-    .topic-row:hover {
-      background-color: rgba(15, 23, 42, 0.8);
+
+    /* Main Topic Header Area */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-content .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .hero-content .topic-tag {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 12px;
+    }
+
+    .hero-content h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .hero-content p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    /* Topic Tags Nav */
+    .topic-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      background-color: #1e293b;
+      color: #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      text-decoration: none;
+      border: 1px solid #334155;
+      transition: all 0.2s;
+    }
+
+    .pill:hover, .pill.active {
+      background-color: #0284c7;
+      border-color: #0369a1;
+      color: #ffffff;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      background-color: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Section Component Structure */
+    .section-wrapper {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #38bdf8;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Standard Dark Card Container */
+    .card-container {
+      background-color: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    /* Sub-tag inside cards */
+    .card-subtag {
+      font-size: 10px;
+      font-weight: 800;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    /* Buttons */
+    .btn-outline {
+      display: inline-block;
+      background-color: transparent;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background-color: #38bdf8;
+      color: #0f172a;
+    }
+
+    .btn-solid-green {
+      background-color: #0d9488;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-dark {
+      background-color: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Grid layout for Section 1 */
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-preview {
+      width: 100%;
+      height: 160px;
+      background-color: #1e293b;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-preview::after {
+      content: '▶';
+      width: 40px;
+      height: 30px;
+      background-color: #ff0000;
+      border-radius: 6px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    /* Section 4: Python Runner Layout */
+    .runner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .runner-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .code-box {
+      background-color: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      color: #e2e8f0;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .code-editor {
+      width: 100%;
+      height: 140px;
+      background-color: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      color: #38bdf8;
+      resize: none;
+      outline: none;
+    }
+
+    .action-bar {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+
+    .output-box {
+      background-color: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 12px;
+      min-height: 60px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13px;
+      color: #38bdf8;
+    }
+
+    .checklist {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .checklist ol {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .checklist li {
+      margin-bottom: 8px;
+    }
+
+    .notice-text {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 16px;
+      border-top: 1px dashed #1e293b;
+      padding-top: 12px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #1e293b;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 40px;
     }
   </style>
 </head>
-<body class="min-h-screen py-6 px-4 sm:px-6 lg:px-12 selection:bg-teal-400 selection:text-slate-950">
+<body>
 
-  <div class="max-w-5xl mx-auto space-y-12">
+  <div class="container">
 
-    <!-- NAVIGATION HEADER -->
-    <header class="flex items-center justify-between border-b border-slate-800/80 pb-5">
-      <div class="flex items-center gap-2 text-white font-bold tracking-wide">
-        <span class="text-teal-400 text-xl">⌘</span>
-        <span class="text-sm tracking-widest uppercase">КРИПТОГРАФІЯ</span>
-      </div>
-      <a href="#topics" class="text-xs font-semibold text-slate-400 hover:text-teal-400 transition">
-        Теми курсу
+    <!-- Header Navigation -->
+    <header>
+      <a href="#" class="brand">
+        <span class="brand-icon"></span>
+        Криптографія
       </a>
+      <a href="#" class="top-link">До маршруту &rarr;</a>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
-      
-      <!-- Hero Text -->
-      <div class="lg:col-span-6 space-y-6">
-        <span class="text-[11px] font-bold tracking-widest uppercase text-amber-500">
-          ВСТУП ДО КРИПТОГРАФІЇ
-        </span>
+    <!-- Hero / Title Area -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="section-tag">Розділ 01 • Шифри минулого</div>
+        <div class="topic-tag">Тема 01</div>
+        <h1>Графічні шрифти</h1>
+        <p>Графічні знаки замість літер: дослідіть Пігпен, прочитайте таємне повідомлення й створіть власний артефакт.</p>
 
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          Криптографія.<br>
-          <span class="text-teal-400">Подорож у часі</span>
-        </h1>
-
-        <p class="text-slate-400 text-sm leading-relaxed max-w-md">
-          Від давніх шифрів до цифрових секретів майбутнього.
-        </p>
-
-        <div>
-          <button type="button" onclick="alert('Ласкаво просимо до курсу з криптографії!')" class="bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs tracking-wide transition shadow-lg teal-glow">
-            Вхід у світ таємниць
-          </button>
+        <div class="topic-pills">
+          <a href="#sec1" class="pill active">Відео і матеріали</a>
+          <a href="#sec2" class="pill">Практика</a>
+          <a href="#sec3" class="pill">Чат-бот</a>
+          <a href="#sec4" class="pill">Шифри в коді</a>
+          <a href="#sec5" class="pill">Зворотний зв'язок</a>
         </div>
       </div>
 
-      <!-- Hero Mascot Visual -->
-      <div class="lg:col-span-6">
-        <div class="relative bg-slate-900/90 border border-slate-800 rounded-3xl p-4 overflow-hidden group">
-          <div class="aspect-[4/3] rounded-2xl bg-slate-950 border border-teal-500/20 flex flex-col items-center justify-center relative overflow-hidden p-6 text-center">
-            
-            <!-- Background Magic Rings Effect -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
-              <div class="w-64 h-64 border border-teal-400 rounded-full animate-spin" style="animation-duration: 20s;"></div>
-              <div class="w-48 h-48 border border-amber-400 rounded-full absolute"></div>
-            </div>
-
-            <!-- Mascot Graphics -->
-            <div class="w-24 h-24 rounded-full bg-teal-500/10 border border-teal-400/40 flex items-center justify-center text-4xl mb-3 shadow-inner relative z-10">
-              🐱‍👤
-            </div>
-            <div class="text-xs font-semibold text-slate-300 relative z-10">Асистент-Криптограф</div>
-            <p class="text-[11px] text-slate-500 mt-1 relative z-10">Ваш провідник крізь епохи шифрування</p>
-
-            <!-- Bottom Badge -->
-            <div class="absolute bottom-3 left-4 right-4 flex justify-between items-center text-[10px] text-slate-500 font-mono border-t border-slate-800/80 pt-2">
-              <span>Минуле</span>
-              <span class="text-teal-400">• сьогодення •</span>
-              <span>Майбутнє</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- SECTION TITLE & SUBTITLE -->
-    <div id="topics" class="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-slate-800/60 gap-2">
-      <div class="text-xs font-bold text-teal-400 tracking-widest uppercase">МАРШРУТ ПОДОРОЖІ</div>
-      <div class="text-xs text-slate-500">Кожна тема — нова таємниця.</div>
-    </div>
-
-    <!-- SECTION 01 -->
-    <div class="border border-slate-800 rounded-2xl overflow-hidden bg-slate-950/40">
-      
-      <!-- Section 01 Banner Header -->
-      <div class="bg-[#0e2729] border-b border-teal-900/50 p-5 flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg bg-teal-950 border border-teal-700/50 flex items-center justify-center text-amber-400 font-serif font-bold text-lg flex-shrink-0">
-          I
-        </div>
-        <div>
-          <span class="text-[10px] font-bold tracking-widest text-teal-400 uppercase">РОЗДІЛ 01</span>
-          <h2 class="text-lg font-bold text-white">Шифри минулого</h2>
-          <p class="text-xs text-slate-400">Від стрічки до роторної машини</p>
-        </div>
-      </div>
-
-      <!-- Section 01 Topics List -->
-      <div class="divide-y divide-slate-800/60">
-        
-        <!-- 1.1 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">1.1</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Графічні шифри</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Графічні знаки • Пігпен • ланцюжок DRAW</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 1.2 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">1.2</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Таємниці Біблії</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Дзеркальна абетка • шифр Атбаш</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 1.3 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">1.3</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Шифр Цезаря</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Зсув абетки • ключ • математична модель • ланцюжок «Цезар»</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 1.4 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">1.4</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Кейс «Ключі»</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Перебір ключів • частотний аналіз • практика на сайті</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 1.5 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">1.5</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Шифр Віженера</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Ключове слово • поліалфавітне шифрування</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 1.6 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">1.6</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Енігма</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Ротори • панель перемичок • зміна стану • практичні кейси</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
+      <div class="hero-image">
+        <!-- Заглушка картини з котиком-дослідником -->
+        <img src="cipher-cat.png" alt="Артефакти та криптографія" />
       </div>
     </div>
 
+    <hr style="border: none; border-top: 1px solid #1e293b; margin-bottom: 32px;">
 
-    <!-- SECTION 02 -->
-    <div class="border border-slate-800 rounded-2xl overflow-hidden bg-slate-950/40">
-      
-      <!-- Section 02 Banner Header -->
-      <div class="bg-[#0e2729] border-b border-teal-900/50 p-5 flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg bg-teal-950 border border-teal-700/50 flex items-center justify-center text-amber-400 font-serif font-bold text-lg flex-shrink-0">
-          II
-        </div>
-        <div>
-          <span class="text-[10px] font-bold tracking-widest text-teal-400 uppercase">РОЗДІЛ 02</span>
-          <h2 class="text-lg font-bold text-white">Як працює сучасна криптографія</h2>
-          <p class="text-xs text-slate-400">Від математичних ідей до сучасного захищеного обміну</p>
-        </div>
+    <!-- Section 1 -->
+    <div class="section-wrapper" id="sec1">
+      <div class="section-header">
+        <span class="step-number">1</span>
+        <h2>Відео і матеріали</h2>
       </div>
 
-      <div class="divide-y divide-slate-800/60">
-
-        <!-- PART 1 HEADER -->
-        <div class="bg-slate-900/80 px-4 py-2.5 text-xs font-bold text-teal-400 tracking-wide border-b border-slate-800">
-          Частина 1. Математична майстерня
+      <div class="media-grid">
+        <!-- Card 1.1 -->
+        <div class="card-container">
+          <div class="card-subtag">Відео</div>
+          <div class="card-title">DRAW</div>
+          <div class="video-preview"></div>
+          <p class="card-text">Перегляньте відео, а потім переходьте до практики.</p>
+          <a href="https://www.youtube.com/watch?v=7_Wyneg8Aj4&time_continue=2&source_ve_path=NzY3NTg&embeds_referring_euri=https%3A%2F%2Flusbul.github.io%2F" class="btn-outline">Відкрити відео на YouTube</a>
         </div>
 
-        <!-- 2.1 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.1</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Повідомлення стає числом</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Біти • байти • двійкова й шістнадцяткова системи • кодування символів</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
+        <!-- Card 1.2 -->
+        <div class="card-container">
+          <div class="card-subtag">Матеріали</div>
+          <div class="card-title">Графічні шифри - DRAW</div>
+          <p class="card-text">Презентація для опрацювання теми.</p>
+      
+          
+          <a href="presentation.pdf" download class="btn-outline">Завантажити презентацію</a>
         </div>
-
-        <!-- 2.2 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.2</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Арифметика по колу</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Модуль • циклічні зсуви • обернення дій • Цезар і Віженер</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.3 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.3</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Вернам і секрет одного використання</h3>
-              <p class="text-xs text-slate-500 mt-0.5">XOR • оборотність • одноразовий блокнот • повторення ключа</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.4 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.4</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Криптоаналіз — як перевіряють захист</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Перебір • частоти • відомий відкритий текст • простір ключів</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- PART 2 HEADER -->
-        <div class="bg-slate-900/80 px-4 py-2.5 text-xs font-bold text-teal-400 tracking-wide border-b border-slate-800">
-          Частина 2. Симетричні шифри
-        </div>
-
-        <!-- 2.5 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.5</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Lucifer і конструкція Фейстеля</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Половини блоку • XOR • раундова функція • оборотність</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.6 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.6</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">DES — коли ключа вже недостатньо</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Перестановки • підстановки • раунди • розмір ключа</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.7 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.7</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">AES — замінити й перемішати</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Матриця байтів • S-box • ShiftRows • MixColumns • XOR</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.8 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.8</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Зашифрувати — ще не означає захистити</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Режими роботи • nonce • тег • перевірка цілісності • AES-GCM</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.9 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.9</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">ChaCha20 — секрет у потоці</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Додавання за модулем • XOR • циклічні зсуви • Poly1305</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- PART 3 HEADER -->
-        <div class="bg-slate-900/80 px-4 py-2.5 text-xs font-bold text-teal-400 tracking-wide border-b border-slate-800">
-          Частина 3. Асиметрична криптографія
-        </div>
-
-        <!-- 2.10 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.10</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Математика двох ключів</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Прості числа • НСД • алгоритм Евкліда • обернене число за модулем</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.11 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.11</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Діффі—Геллман — домовитися про секрет</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Степені за модулем • спільний секрет • відкритий канал</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.12 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.12</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">RSA — два ключі до повідомлення</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Прості числа • функція Ейлера • відкритий і закритий ключі</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.13 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.13</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Еліптичні криві — інша математична дорога</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Точки над скінченним полем • додавання точок • інтерактивна сітка</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- 2.14 -->
-        <div class="topic-row p-4 flex items-center justify-between gap-4 transition">
-          <div class="flex items-start gap-4">
-            <span class="text-xs font-mono text-slate-500 pt-0.5">2.14</span>
-            <div>
-              <h3 class="text-sm font-bold text-white">Гібридний захист</h3>
-              <p class="text-xs text-slate-500 mt-0.5">Узгодження ключа • симетричне шифрування • перевірка пакета</p>
-            </div>
-          </div>
-          <button type="button" class="px-4 py-1.5 bg-slate-900 hover:bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg text-xs font-medium transition">
-            Перейти
-          </button>
-        </div>
-
-        <!-- PART 4 HEADER -->
-        <div class="bg-slate-900/80 px-4 py-3 text-xs font-bold text-teal-400 tracking-wide">
-          Частина 4. Підсумкове дослідження
-        </div>
-
       </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-800/80 pt-8 pb-4 text-center text-slate-500 text-xs space-y-2">
-      <p>⌘ Криптографія • Подорож у часі</p>
-      <p class="text-slate-600">Від давніх шифрів до цифрових секретів майбутнього</p>
+    <!-- Section 2 -->
+    <div class="section-wrapper" id="sec2">
+      <div class="section-header">
+        <span class="step-number">2</span>
+        <h2>Практика</h2>
+      </div>
+
+      <div class="card-container">
+        <div class="card-subtag">Інтерактив</div>
+        <div class="card-title">DRAW • Знаки архіву</div>
+        <p class="card-text">Графічні повідомлення, таблиця Пігпена та власний артефакт. Звіт у PDF.</p>
+        <a href="https://lusbul.github.io/crypto/mission02/draw-task.html" class="btn-outline">Почати практику</a>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section-wrapper" id="sec3">
+      <div class="section-header">
+        <span class="step-number">3</span>
+        <h2>Чат-бот</h2>
+      </div>
+
+      <div class="card-container">
+        <div class="card-subtag">Ланцюжок</div>
+        <div class="card-title">DRAW</div>
+        <p class="card-text">Відкрийте чат-бот і оберіть ланцюжок «DRAW».</p>
+        <a href="https://lusbul.github.io/crypto/mission02/webbot.html" class="btn-outline">Відкрити чат-бот</a>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section-wrapper" id="sec4">
+      <div class="section-header">
+        <span class="step-number">4</span>
+        <h2>Шифри в коді</h2>
+      </div>
+
+      <div class="card-container">
+        <div class="card-subtag">Python • Спробуйте самі</div>
+        <div class="card-title">Сигнал SOS</div>
+        <p class="card-text">Морзе кодує символи крапками й тире. Це кодування, а не шифрування. «?» означає, що символа ще немає у словнику.</p>
+
+        <div class="runner-grid">
+          <!-- Left Column: Examples & Instructions -->
+          <div>
+            <details style="margin-bottom: 12px; font-size: 13px; color: #38bdf8; cursor: pointer;">
+              <summary><b>▼ Короткий приклад Python</b></summary>
+              <div class="code-box" style="margin-top: 8px;">
+                codes = {"S": "...", "O": "---"}<br>
+                message = "SOS"<br>
+                result = ""<br>
+                for letter in message:<br>
+                &nbsp;&nbsp;result += codes.get(letter, "?") + " "<br>
+                print(result.strip())
+              </div>
+            </details>
+
+            <button class="btn-outline" style="font-size: 11px; padding: 4px 8px; margin-bottom: 16px;" onclick="insertExample()">Вставити приклад у Runner</button>
+
+            <div class="checklist">
+              <strong style="color: #ffffff;">Перевірте себе</strong>
+              <ol>
+                <li>Запустіть SOS: має вийти <code>... --- ...</code></li>
+                <li>Знайдіть код літери А та додайте "A": ".-" у словник. Замініть повідомлення на "SAS".</li>
+                <li>Доповніть словник іншими літерами та передайте власне слово.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Editor -->
+          <div>
+            <div style="font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">Runner - змініть код</div>
+            <textarea id="codeEditor" class="code-editor">codes = {"S": "...", "O": "---"}
+message = "SOS"
+result = ""
+for letter in message:
+    result += codes.get(letter, "?") + " "
+print(result.strip())</textarea>
+
+            <div class="action-bar">
+              <button class="btn-solid-green" onclick="runPython()">▶ Запустити</button>
+              <button class="btn-dark">■ Зупинити</button>
+              <button class="btn-dark">Скопіювати</button>
+              <button class="btn-dark">Завантажити .py</button>
+            </div>
+
+            <details style="font-size: 11px; color: #64748b; margin-bottom: 12px;">
+              <summary>► Якщо використовуєте input()</summary>
+            </details>
+
+            <div style="font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 4px;">Результат</div>
+            <div id="outputConsole" class="output-box">
+              Натисніть «Запустити».
+            </div>
+          </div>
+        </div>
+
+        <div class="notice-text">
+          Код виконується у вашому браузері. Перший запуск завантажує Python — потрібен інтернет. На телефоні приклад можна розгорнути, а код у Runner — редагувати.
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section-wrapper" id="sec5">
+      <div class="section-header">
+        <span class="step-number">5</span>
+        <h2>Зворотний зв'язок</h2>
+      </div>
+
+      <div class="card-container">
+        <div class="card-subtag">Ваша думка</div>
+        <div class="card-title">Як пройшла ця тема?</div>
+        <p class="card-text">Поділіться враженнями: що було зрозумілим, що викликало труднощі та які запитання залишилися.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJFuUr0rdqCeT88Pcs-dk-8HEwOd4vhQCifTQVtpl50eKEbg/viewform" class="btn-outline">Заповнити форму</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div>Криптографія. Подорож у часі</div>
+      <div>Шифри минулого</div>
     </footer>
 
   </div>
+
+  <script>
+    function insertExample() {
+      document.getElementById('codeEditor').value = `codes = {"S": "...", "O": "---", "A": ".-"}
+message = "SAS"
+result = ""
+for letter in message:
+    result += codes.get(letter, "?") + " "
+print(result.strip())`;
+    }
+
+    function runPython() {
+      const code = document.getElementById('codeEditor').value;
+      const output = document.getElementById('outputConsole');
+      
+      // Проста симуляція роботи коду Morse Python
+      if (code.includes('SOS')) {
+        output.innerText = '... --- ...';
+      } else if (code.includes('SAS')) {
+        output.innerText = '... .- ...';
+      } else {
+        output.innerText = '... --- ... (код успішно виконано)';
+      }
+    }
+  </script>
 
 </body>
 </html>

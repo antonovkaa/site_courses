@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Введення: input() — Практика</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #f3f0fd;
+      color: #232233;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 820px;
+    }
+
+    /* Top Navigation Header */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #3bca9b;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 18px;
+      height: 18px;
+      background-color: #3bca9b;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .top-link {
+      color: #5c4ee5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* Hero Banner */
+    .banner {
+      background: linear-gradient(135deg, #e7e0fd 0%, #ded5fb 100%);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .banner-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #5c4ee5;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .banner-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .banner-desc {
+      font-size: 13px;
+      color: #65647c;
+      line-height: 1.4;
+    }
+
+    /* Meta & Progress */
+    .nav-back {
+      display: inline-block;
+      color: #5c4ee5;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .user-input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #555468;
+      margin-bottom: 10px;
+    }
+
+    .user-input-group input {
+      padding: 6px 12px;
+      border: 1px solid #d3cfe8;
+      border-radius: 6px;
+      outline: none;
+      font-size: 13px;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      color: #6b6a82;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background-color: #e2dcfa;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #5c4ee5;
+      transition: width 0.3s ease;
+    }
+
+    /* Tasks Cards */
+    .task-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(92, 78, 229, 0.04);
+      border: 1px solid #eae6f7;
+    }
+
+    .task-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .task-subtitle {
+      font-size: 13px;
+      color: #65647c;
+      margin-bottom: 16px;
+    }
+
+    /* Code Block */
+    .code-block {
+      background-color: #232d42;
+      color: #ffffff;
+      font-family: 'Consolas', 'Courier New', monospace;
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .text-input, .select-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d0cbe5;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 16px;
+      background-color: #fff;
+    }
+
+    .text-input:focus, .select-input:focus {
+      border-color: #5c4ee5;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #5c4ee5;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #493bc3;
+    }
+
+    .btn-secondary {
+      background-color: #7262f0;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .hint-toggle {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #65647c;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hint-content {
+      display: none;
+      margin-top: 10px;
+      padding: 12px 16px;
+      background-color: #f7f5fd;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #4a4963;
+      border-left: 3px solid #5c4ee5;
+    }
+
+    /* Builder Area */
+    .builder-pool, .builder-target {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+      min-height: 48px;
+    }
+
+    .code-item {
+      background-color: #f0ecfc;
+      border: 1px solid #dcd5f7;
+      color: #232233;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+    }
+
+    .code-item:hover {
+      border-color: #5c4ee5;
+      background-color: #e6e0fa;
+    }
+
+    .builder-target-container {
+      margin-top: 10px;
+    }
+
+    .builder-target {
+      background-color: #faf9fe;
+      border: 1px dashed #c1b9ea;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .builder-placeholder {
+      font-size: 12px;
+      color: #9391a8;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Feedback message */
+    .feedback {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .feedback.correct { color: #2e7d32; }
+    .feedback.incorrect { color: #d32f2f; }
+
+    /* Report Banner Bottom */
+    .report-card {
+      background: linear-gradient(135deg, #e7e0fd 0%, #ded5fb 100%);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    .report-card p {
+      font-size: 12px;
+      color: #555468;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .report-btn {
+      margin-top: 12px;
+    }
+
+    /* Bottom Actions */
+    .bottom-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+
+    .reset-btn {
+      background-color: #ffffff;
+      border: 1px solid #232233;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="top-bar">
+      <a href="#" class="brand">
+        <span class="brand-icon"></span>
+        Інтерактивний Python
+      </a>
+      <a href="#" class="top-link">Мій звіт - PDF</a>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+      <div class="banner-tag">Практика • 3 кроки</div>
+      <h1 class="banner-title">Введення: input()</h1>
+      <p class="banner-desc"><code>input()</code> повертає текст. <code>int()</code> перетворює текст цілого числа на число.</p>
+    </div>
+
+    <!-- Nav Back & User info -->
+    <a href="#" class="nav-back">&larr; До розділу</a>
+
+    <div class="user-input-group">
+      <label for="username">Ім'я для звіту (необов'язково)</label>
+      <input type="text" id="username" placeholder="" />
+    </div>
+
+    <div class="progress-text" id="progressText">Виконано 0 із 3 завдань</div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Task 1 -->
+    <div class="task-card">
+      <h2 class="task-title">1. Передбачте результат</h2>
+      <p class="task-subtitle">Користувач вводить 4. Скільки батарей залишиться після бонусу?</p>
+
+      <div class="code-block">
+        count = int(input())<br>
+        print(count + 2)
+      </div>
+
+      <label class="form-label" for="ans1">Ваша відповідь (без лапок)</label>
+      <input type="text" id="ans1" class="text-input" placeholder="" />
+
+      <button class="btn-primary" onclick="checkTask1()">Перевірити</button>
+      <div id="fb1" class="feedback"></div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task-card">
+      <h2 class="task-title">2. Оберіть рішення</h2>
+      <p class="task-subtitle">Як отримати дробову температуру?</p>
+
+      <label class="form-label">Варіант відповіді</label>
+      <select id="ans2" class="select-input">
+        <option value="" disabled selected>Оберіть...</option>
+        <option value="1">temp = int(input())</option>
+        <option value="2">temp = float(input())</option>
+        <option value="3">temp = str(input())</option>
+      </select>
+
+      <button class="btn-primary" onclick="checkTask2()">Перевірити</button>
+      <div id="fb2" class="feedback"></div>
+
+      <div class="hint-toggle" onclick="toggleHint('hint2')">
+        <span>&#9656;</span> Підказка
+      </div>
+      <div id="hint2" class="hint-content">
+        Для роботи з дробовими числами в Python використовується функція <code>float()</code>.
+      </div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task-card">
+      <h2 class="task-title">3. Зберіть програму</h2>
+      <p class="task-subtitle">Завдання: запитайте кількість квитків, задайте ціну 50, обчисліть і виведіть вартість. Дотримуйтеся саме цієї послідовності дій. Розташуйте всі рядки у логічному порядку. Натисніть рядок у програмі, щоб повернути його до набору. Відступи в рядках уже задано.</p>
+
+      <!-- Source blocks -->
+      <div id="builderPool" class="builder-pool">
+        <div class="code-item" data-code="print(total)" onclick="moveToTarget(this)">print(total)</div>
+        <div class="code-item" data-code="total = count * price" onclick="moveToTarget(this)">total = count * price</div>
+        <div class="code-item" data-code="price = 50" onclick="moveToTarget(this)">price = 50</div>
+        <div class="code-item" data-code='count = int(input("Квитки: "))' onclick="moveToTarget(this)">count = int(input("Квитки: "))</div>
+      </div>
+
+      <label class="form-label">Ваша програма</label>
+      <div class="builder-target-container">
+        <div id="builderTarget" class="builder-target">
+          <div id="builderPlaceholder" class="builder-placeholder">Тут з'являться обрані рядки.</div>
+        </div>
+      </div>
+
+      <div class="btn-group" style="margin-top: 16px;">
+        <button class="btn-primary" onclick="checkTask3()">Перевірити програму</button>
+        <button class="btn-secondary" onclick="downloadCode()">Завантажити .py</button>
+      </div>
+      <div id="fb3" class="feedback"></div>
+    </div>
+
+    <!-- Report Footer Box -->
+    <div class="report-card">
+      <p><strong>Звіт оновлюється після кожної перевірки.</strong></p>
+      <p>У звіті видно відповіді та всі спроби. Для PDF оберіть «Зберегти як PDF» у вікні друку.</p>
+      <button class="btn-primary report-btn">Звіт цієї практики - PDF &rarr;</button>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="bottom-actions">
+      <a href="#" class="nav-back">&larr; До розділу</a>
+      <a href="#" class="top-link">Наступна тема &rarr;</a>
+    </div>
+
+    <button class="reset-btn" onclick="resetAll()">Почати цю практику заново</button>
+  </div>
+
+  <script>
+    const completedTasks = new Set();
+
+    function updateProgress() {
+      const count = completedTasks.size;
+      document.getElementById('progressText').innerText = `Виконано ${count} із 3 завдань`;
+      document.getElementById('progressBar').style.width = `${(count / 3) * 100}%`;
+    }
+
+    // Task 1 Logic
+    function checkTask1() {
+      const val = document.getElementById('ans1').value.trim();
+      const fb = document.getElementById('fb1');
+      if (val === '6') {
+        fb.innerText = 'Правильно!';
+        fb.className = 'feedback correct';
+        completedTasks.add(1);
+      } else {
+        fb.innerText = 'Неправильно. Спробуйте ще раз.';
+        fb.className = 'feedback incorrect';
+        completedTasks.delete(1);
+      }
+      updateProgress();
+    }
+
+    // Task 2 Logic
+    function checkTask2() {
+      const val = document.getElementById('ans2').value;
+      const fb = document.getElementById('fb2');
+      if (val === '2') {
+        fb.innerText = 'Правильно!';
+        fb.className = 'feedback correct';
+        completedTasks.add(2);
+      } else {
+        fb.innerText = 'Неправильно. Для дробових чисел використовується float().';
+        fb.className = 'feedback incorrect';
+        completedTasks.delete(2);
+      }
+      updateProgress();
+    }
+
+    function toggleHint(id) {
+      const hint = document.getElementById(id);
+      hint.style.display = hint.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Task 3 Builder Logic
+    function moveToTarget(elem) {
+      const target = document.getElementById('builderTarget');
+      const placeholder = document.getElementById('builderPlaceholder');
+      placeholder.style.display = 'none';
+      elem.setAttribute('onclick', 'moveToPool(this)');
+      target.appendChild(elem);
+    }
+
+    function moveToPool(elem) {
+      const pool = document.getElementById('builderPool');
+      const target = document.getElementById('builderTarget');
+      const placeholder = document.getElementById('builderPlaceholder');
+      elem.setAttribute('onclick', 'moveToTarget(this)');
+      pool.appendChild(elem);
+
+      if (target.children.length === 1) { // Only placeholder remains
+        placeholder.style.display = 'block';
+      }
+    }
+
+    function checkTask3() {
+      const target = document.getElementById('builderTarget');
+      const items = Array.from(target.querySelectorAll('.code-item')).map(item => item.getAttribute('data-code'));
+      const fb = document.getElementById('fb3');
+
+      const expected = [
+        'count = int(input("Квитки: "))',
+        'price = 50',
+        'total = count * price',
+        'print(total)'
+      ];
+
+      const isCorrect = items.length === expected.length && items.every((val, index) => val === expected[index]);
+
+      if (isCorrect) {
+        fb.innerText = 'Чудово! Програму зібрано правильно.';
+        fb.className = 'feedback correct';
+        completedTasks.add(3);
+      } else {
+        fb.innerText = 'Неправильний порядок рядків. Перевірте умову завдання.';
+        fb.className = 'feedback incorrect';
+        completedTasks.delete(3);
+      }
+      updateProgress();
+    }
+
+    function downloadCode() {
+      const target = document.getElementById('builderTarget');
+      const items = Array.from(target.querySelectorAll('.code-item')).map(item => item.getAttribute('data-code'));
+      const codeText = items.join('\n');
+
+      const blob = new Blob([codeText], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'program.py';
+      a.click();
+    }
+
+    function resetAll() {
+      completedTasks.clear();
+      updateProgress();
+
+      document.getElementById('ans1').value = '';
+      document.getElementById('fb1').innerText = '';
+
+      document.getElementById('ans2').value = '';
+      document.getElementById('fb2').innerText = '';
+
+      const target = document.getElementById('builderTarget');
+      const pool = document.getElementById('builderPool');
+      const items = target.querySelectorAll('.code-item');
+      items.forEach(item => {
+        item.setAttribute('onclick', 'moveToTarget(this)');
+        pool.appendChild(item);
+      });
+      document.getElementById('builderPlaceholder').style.display = 'block';
+      document.getElementById('fb3').innerText = '';
+    }
+  </script>
+</body>
+</html>

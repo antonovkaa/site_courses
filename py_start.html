@@ -45,7 +45,7 @@
         .logo-icon {
             width: 20px;
             height: 20px;
-            background-color: #2b7a78;
+            background-color: #3bca9b;
             border-radius: 50%;
         }
 
@@ -100,7 +100,7 @@
         }
 
         /* Section Titles */
-        .section-title {
+        .page-section-title {
             font-size: 20px;
             font-weight: 700;
             color: #1a1a2e;
@@ -108,14 +108,14 @@
         }
 
         /* Interactive Sections List */
-        .section-list {
+        .interactive-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 35px;
         }
 
-        .section-card {
+        .interactive-card {
             background-color: #ffffff;
             border-radius: 12px;
             padding: 16px 20px;
@@ -132,7 +132,7 @@
             gap: 15px;
         }
 
-        .badge {
+        .card-badge {
             background-color: #f0edfe;
             color: #6a55ea;
             font-weight: 700;
@@ -153,7 +153,8 @@
             color: #7a7b8e;
         }
 
-        .btn-primary {
+        /* Кнопка-посилання */
+        .practice-btn {
             background-color: #5c4ee5;
             color: white;
             border: none;
@@ -162,12 +163,13 @@
             font-weight: 600;
             font-size: 13px;
             cursor: pointer;
-            transition: background-color 0.2s;
             text-decoration: none;
             display: inline-block;
+            transition: background-color 0.2s;
+            white-space: nowrap;
         }
 
-        .btn-primary:hover {
+        .practice-btn:hover {
             background-color: #4b3ecb;
         }
 
@@ -179,7 +181,7 @@
             margin-bottom: 40px;
         }
 
-        .quest-card {
+        .quest-item {
             background-color: #ffffff;
             border-radius: 12px;
             padding: 20px;
@@ -233,7 +235,7 @@
             font-size: 14px;
         }
 
-        .pdf-btn {
+        .pdf-action-btn {
             background-color: #5c4ee5;
             color: white;
             border: none;
@@ -243,6 +245,8 @@
             font-size: 13px;
             cursor: pointer;
             margin-bottom: 40px;
+            display: inline-block;
+            text-decoration: none;
         }
 
         /* Footer */
@@ -278,71 +282,72 @@
         </div>
 
         <!-- Interactive Sections -->
-        <h2 class="section-title">Інтерактивні розділи</h2>
-        <div class="section-list">
+        <h2 class="page-section-title">Інтерактивні розділи</h2>
+        <div class="interactive-list">
             
-            <div class="section-card">
+            <div class="interactive-card">
                 <div class="card-left">
-                    <span class="badge">01</span>
+                    <span class="card-badge">01</span>
                     <div class="card-info">
                         <h3>Знайомство з Python</h3>
                         <p>Мова програмування та середовище для роботи.</p>
                     </div>
                 </div>
-                <a href="https://lusbul.github.io/pythonstart/practice.html?topic=basics-1" class="btn-primary">
+                <!-- Змініть # на вашу адресу посилання -->
+                <a href="https://lusbul.github.io/pythonstart/practice.html?topic=basics-1" class="practice-btn">Практикуватися &rarr;</a>
             </div>
 
-            <div class="section-card">
+            <div class="interactive-card">
                 <div class="card-left">
-                    <span class="badge">02</span>
+                    <span class="card-badge">02</span>
                     <div class="card-info">
                         <h3>Hello World</h3>
                         <p>Перша програма та перше повідомлення на екрані.</p>
                     </div>
                 </div>
-                <button class="btn-primary">Практикуватися &rarr;</button>
+                <a href="https://lusbul.github.io/pythonstart/practice.html?topic=basics-2" class="practice-btn">Практикуватися &rarr;</a>
             </div>
 
-            <div class="section-card">
+            <div class="interactive-card">
                 <div class="card-left">
-                    <span class="badge">03</span>
+                    <span class="card-badge">03</span>
                     <div class="card-info">
                         <h3>Виведення: print()</h3>
                         <p>Повідомлення, значення змінних і кілька аргументів.</p>
                     </div>
                 </div>
-                <button class="btn-primary">Практикуватися &rarr;</button>
+                <a href="https://lusbul.github.io/pythonstart/practice.html?topic=basics-3" class="practice-btn">Практикуватися &rarr;</a>
             </div>
 
-            <div class="section-card">
+            <div class="interactive-card">
                 <div class="card-left">
-                    <span class="badge">04</span>
+                    <span class="card-badge">04</span>
                     <div class="card-info">
                         <h3>Змінні та типи даних</h3>
                         <p>Назви змінних, str, int i float.</p>
                     </div>
                 </div>
-                <button class="btn-primary">Практикуватися &rarr;</button>
+                <a href="https://lusbul.github.io/pythonstart/practice.html?topic=basics-4" class="practice-btn">Практикуватися &rarr;</a>
             </div>
 
-            <div class="section-card">
+            <div class="interactive-card">
                 <div class="card-left">
-                    <span class="badge">05</span>
+                    <span class="card-badge">05</span>
                     <div class="card-info">
                         <h3>Введення: input()</h3>
                         <p>Отримання відповідей і перетворення введення на числа.</p>
                     </div>
                 </div>
-                <button class="btn-primary">Практикуватися &rarr;</button>
+                <a href="input.html" class="practice-btn">Практикуватися &rarr;</a>
             </div>
 
         </div>
 
         <!-- Practice Quests -->
-        <h2 class="section-title">Квести для практики</h2>
+        <h2 class="page-section-title">Квести для практики</h2>
         <div class="quests-grid">
             
-            <div class="quest-card">
+            <div class="quest-item">
                 <div>
                     <div class="quest-title">🧪 Перший тренажер</div>
                     <div class="quest-desc">Початковий інтерактив курсу.</div>
@@ -350,7 +355,7 @@
                 <a href="#" class="quest-link">Відкрити &rarr;</a>
             </div>
 
-            <div class="quest-card">
+            <div class="quest-item">
                 <div>
                     <div class="quest-title">🐉 Пригоди дракона</div>
                     <div class="quest-desc">Конструктор програм із готових рядків.</div>
@@ -358,7 +363,7 @@
                 <a href="#" class="quest-link">Почати квест &rarr;</a>
             </div>
 
-            <div class="quest-card">
+            <div class="quest-item">
                 <div>
                     <div class="quest-title">🤖 РобоКвест: п'ять кроків</div>
                     <div class="quest-desc">print, input, назви змінних, int / float та арифметика.</div>
@@ -374,7 +379,7 @@
             <a href="#" class="nav-link">Наступний розділ &rarr;</a>
         </div>
 
-        <button class="pdf-btn">Мій звіт - PDF</button>
+        <a href="#" class="pdf-action-btn">Мій звіт - PDF</a>
 
         <!-- Footer -->
         <footer>
