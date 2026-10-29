@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інтерактивний Python</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f3fb;
+            color: #2d2d3a;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0 25px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #2b7a78;
+            font-size: 16px;
+        }
+
+        .logo-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #2b7a78;
+            border-radius: 50%;
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        /* Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #e9e5fc 0%, #e2dcfa 100%);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .hero-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #3bca9b;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .hero-content .subtitle {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            color: #6a55ea;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .hero-content h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .hero-content p {
+            font-size: 14px;
+            color: #6b6c7e;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 18px;
+        }
+
+        /* Interactive Sections List */
+        .section-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid #eaeaea;
+        }
+
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .badge {
+            background-color: #f0edfe;
+            color: #6a55ea;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
+        .card-info h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 3px;
+        }
+
+        .card-info p {
+            font-size: 13px;
+            color: #7a7b8e;
+        }
+
+        .btn-primary {
+            background-color: #5c4ee5;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #4b3ecb;
+        }
+
+        /* Quests Grid */
+        .quests-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .quest-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid #eaeaea;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 110px;
+        }
+
+        .quest-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+
+        .quest-desc {
+            font-size: 13px;
+            color: #7a7b8e;
+            margin-bottom: 15px;
+        }
+
+        .quest-link {
+            color: #5c4ee5;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .quest-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Links */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: #5c4ee5;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .pdf-btn {
+            background-color: #5c4ee5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #e2e0ee;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8c8d9e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span class="logo-icon"></span>
+                <span>Інтерактивний Python</span>
+            </div>
+            <div class="tagline">Від першої команди до власного проєкту</div>
+        </header>
+
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-icon">🐍</div>
+            <div class="hero-content">
+                <div class="subtitle">Розділ 01</div>
+                <h1>Знайомство з Python</h1>
+                <p>Перші команди, введення й виведення, змінні та типи даних.</p>
+            </div>
+        </div>
+
+        <!-- Interactive Sections -->
+        <h2 class="section-title">Інтерактивні розділи</h2>
+        <div class="section-list">
+            
+            <div class="section-card">
+                <div class="card-left">
+                    <span class="badge">01</span>
+                    <div class="card-info">
+                        <h3>Знайомство з Python</h3>
+                        <p>Мова програмування та середовище для роботи.</p>
+                    </div>
+                </div>
+                <button class="btn-primary">Практикуватися &rarr;</button>
+            </div>
+
+            <div class="section-card">
+                <div class="card-left">
+                    <span class="badge">02</span>
+                    <div class="card-info">
+                        <h3>Hello World</h3>
+                        <p>Перша програма та перше повідомлення на екрані.</p>
+                    </div>
+                </div>
+                <button class="btn-primary">Практикуватися &rarr;</button>
+            </div>
+
+            <div class="section-card">
+                <div class="card-left">
+                    <span class="badge">03</span>
+                    <div class="card-info">
+                        <h3>Виведення: print()</h3>
+                        <p>Повідомлення, значення змінних і кілька аргументів.</p>
+                    </div>
+                </div>
+                <button class="btn-primary">Практикуватися &rarr;</button>
+            </div>
+
+            <div class="section-card">
+                <div class="card-left">
+                    <span class="badge">04</span>
+                    <div class="card-info">
+                        <h3>Змінні та типи даних</h3>
+                        <p>Назви змінних, str, int i float.</p>
+                    </div>
+                </div>
+                <button class="btn-primary">Практикуватися &rarr;</button>
+            </div>
+
+            <div class="section-card">
+                <div class="card-left">
+                    <span class="badge">05</span>
+                    <div class="card-info">
+                        <h3>Введення: input()</h3>
+                        <p>Отримання відповідей і перетворення введення на числа.</p>
+                    </div>
+                </div>
+                <button class="btn-primary">Практикуватися &rarr;</button>
+            </div>
+
+        </div>
+
+        <!-- Practice Quests -->
+        <h2 class="section-title">Квести для практики</h2>
+        <div class="quests-grid">
+            
+            <div class="quest-card">
+                <div>
+                    <div class="quest-title">🧪 Перший тренажер</div>
+                    <div class="quest-desc">Початковий інтерактив курсу.</div>
+                </div>
+                <a href="#" class="quest-link">Відкрити &rarr;</a>
+            </div>
+
+            <div class="quest-card">
+                <div>
+                    <div class="quest-title">🐉 Пригоди дракона</div>
+                    <div class="quest-desc">Конструктор програм із готових рядків.</div>
+                </div>
+                <a href="#" class="quest-link">Почати квест &rarr;</a>
+            </div>
+
+            <div class="quest-card">
+                <div>
+                    <div class="quest-title">🤖 РобоКвест: п'ять кроків</div>
+                    <div class="quest-desc">print, input, назви змінних, int / float та арифметика.</div>
+                </div>
+                <a href="#" class="quest-link">Почати квест &rarr;</a>
+            </div>
+
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-link">&larr; Усі розділи</a>
+            <a href="#" class="nav-link">Наступний розділ &rarr;</a>
+        </div>
+
+        <button class="pdf-btn">Мій звіт - PDF</button>
+
+        <!-- Footer -->
+        <footer>
+            Пробуй, помиляйся, досліджуй — і створюй своє ✨
+        </footer>
+    </div>
+
+</body>
+</html>
