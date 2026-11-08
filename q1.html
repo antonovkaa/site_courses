@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Твоя перша розмова з Python</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --accent-yellow: #fbbf24;
+      --accent-green: #10b981;
+      --bg-dark: #1e1b4b;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --code-bg: #1e293b;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f5f9;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 50%, #312e81 100%);
+      color: white;
+      padding: 40px 20px 60px;
+      text-align: left;
+      position: relative;
+    }
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 28px;
+      max-width: 650px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: all 0.2s ease;
+    }
+    .btn-yellow {
+      background-color: var(--accent-yellow);
+      color: #0f172a;
+    }
+    .btn-yellow:hover { background-color: #f59e0b; }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.2); }
+
+    /* Progress Bar */
+    .progress-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 12px 20px;
+    }
+    .progress-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .progress-title { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .progress-bar-bg {
+      flex: 1;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      transition: width 0.3s ease;
+    }
+    .progress-percent { font-size: 0.85rem; font-weight: 800; color: #0f172a; }
+
+    /* Main Container */
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Section Styling */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .step-number {
+      background: #e0e7ff;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .section-title { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+    .section-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; }
+
+    /* Grid & Cards */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .card p { font-size: 0.9rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 16px; }
+
+    /* Selectable Cards */
+    .card-selectable {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      position: relative;
+    }
+    .card-selectable:hover { transform: translateY(-2px); border-color: #cbd5e1; }
+    .card-selectable.selected {
+      border-color: var(--primary);
+      background: #f5f3ff;
+    }
+    .card-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .btn-select {
+      background: #e0e7ff;
+      color: var(--primary);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+    .card-selectable.selected .btn-select {
+      background: var(--primary);
+      color: white;
+    }
+    .selection-result {
+      color: var(--accent-green);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Alert Banner */
+    .info-banner {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Code Editor Box */
+    .code-editor {
+      background: var(--code-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      color: white;
+    }
+    .editor-header {
+      background: #0f172a;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+    .filename { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #94a3b8; margin-left: auto; }
+    
+    .editor-body { padding: 16px; }
+    textarea.code-input {
+      width: 100%;
+      height: 120px;
+      background: transparent;
+      border: none;
+      color: #38bdf8;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      resize: none;
+      outline: none;
+      line-height: 1.6;
+    }
+    .editor-controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      border-top: 1px solid #334155;
+      padding-top: 12px;
+    }
+    .btn-run { background: var(--accent-green); color: white; border: none; }
+    .btn-run:hover { background: #059669; }
+    .btn-reset { background: #334155; color: #cbd5e1; border: none; }
+    .btn-reset:hover { background: #475569; }
+
+    .terminal-output {
+      background: #090d16;
+      border-top: 1px dashed #334155;
+      padding: 16px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      min-height: 70px;
+      white-space: pre-wrap;
+    }
+
+    /* Quiz Option Cards */
+    .quiz-option {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .quiz-option:hover { border-color: var(--primary); background: #f8fafc; }
+    .quiz-option.correct { border-color: var(--accent-green); background: #ecfdf5; color: #065f46; font-weight: 600; }
+    .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+
+    /* ASCII Creator */
+    .ascii-btn-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .btn-chip {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-chip:hover { background: #e2e8f0; }
+
+    /* Forms */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+    .form-group input {
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: #f8fafc;
+      font-size: 0.9rem;
+    }
+
+    /* Success Footer Banner */
+    .success-footer {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 20px;
+      color: #92400e;
+      font-size: 0.95rem;
+    }
+    
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .form-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO HEADER -->
+  <header class="hero">
+    <div class="hero-container">
+      <div class="badge-top">⚡ Інтерактивний тренажер · Урок 1</div>
+      <h1>Твоя перша розмова з Python</h1>
+      <p>Познайомся з мовою програмування, напиши перші команди й створіть маленький символічний автопортрет.</p>
+      <div class="hero-buttons">
+        <a href="#step-1" class="btn btn-yellow">Почати пригоду ↓</a>
+        <a href="#step-5" class="btn btn-outline">До фінального завдання ✈</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- STICKY PROGRESS BAR -->
+  <div class="progress-sticky">
+    <div class="progress-container">
+      <span class="progress-title">Твій маршрут</span>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <span class="progress-percent" id="progressPercent">100%</span>
+    </div>
+  </div>
+
+  <main class="content">
+
+    <!-- 01. Спершу — знайомство -->
+    <section id="step-1">
+      <div class="section-header">
+        <span class="step-number">01</span>
+        <h2 class="section-title">Спершу — знайомство</h2>
+      </div>
+      <p class="section-desc">Кілька понять, які допоможуть почуватися впевнено.</p>
+
+      <div class="grid-2" style="margin-bottom: 20px;">
+        <div class="card">
+          <div class="card-icon">🗣️</div>
+          <h3>Мова програмування</h3>
+          <p>Набір правил і команд, за допомогою яких людина пояснює комп'ютеру, що потрібно зробити. Сьогодні спілкуємося мовою Python.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧰</div>
+          <h3>Середовище розробки</h3>
+          <p>Програма або сайт, де можна писати, запускати й налагоджувати код. Наприклад: PyCharm, Visual Studio Code, Online Python чи єPython.</p>
+        </div>
+      </div>
+
+      <div class="info-banner" style="margin-bottom: 20px;">
+        <span>✈</span>
+        <div><strong>Оберіть місце для старту.</strong> Можна встановити програму або працювати онлайн. Натисни на варіант, який хочеш спробувати.</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card card-selectable" onclick="selectEnv(this, 'єPython')">
+          <div class="card-icon">🌐</div>
+          <h3>єPython</h3>
+          <p>Онлайн-середовище для Python із можливістю працювати з графічними бібліотеками.</p>
+          <span class="card-badge">Працює у браузері</span>
+          <button class="btn-select">Обрати</button>
+          <div class="selection-result" style="display:none;">✓ Твій вибір: єPython</div>
+        </div>
+
+        <div class="card card-selectable" onclick="selectEnv(this, 'Online Python')">
+          <div class="card-icon">⚡</div>
+          <h3>Online Python</h3>
+          <p>Швидкий спосіб створити й виконати код прямо у браузері.</p>
+          <span class="card-badge">Без встановлення</span>
+          <button class="btn-select">Обрати</button>
+          <div class="selection-result" style="display:none;">✓ Твій вибір: Online Python</div>
+        </div>
+
+        <div class="card card-selectable selected" onclick="selectEnv(this, 'PyCharm')">
+          <div class="card-icon">🧠</div>
+          <h3>PyCharm</h3>
+          <p>Повноцінне середовище для розробки програм на Python.</p>
+          <span class="card-badge">Для комп'ютера</span>
+          <button class="btn-select">Обрано</button>
+          <div class="selection-result" style="display:flex;">✓ Твій вибір: PyCharm</div>
+        </div>
+
+        <div class="card card-selectable" onclick="selectEnv(this, 'Visual Studio Code')">
+          <div class="card-icon">🪄</div>
+          <h3>Visual Studio Code</h3>
+          <p>Редактор коду, який можна налаштувати для роботи з Python.</p>
+          <span class="card-badge">Гнучке середовище</span>
+          <button class="btn-select">Обрати</button>
+          <div class="selection-result" style="display:none;">✓ Твій вибір: VS Code</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. Як працює програма? -->
+    <section id="step-2">
+      <div class="section-header">
+        <span class="step-number">02</span>
+        <h2 class="section-title">Як працює програма?</h2>
+      </div>
+      <p class="section-desc">Комп'ютер отримує дані, опрацьовує їх і показує результат.</p>
+
+      <div class="grid-3">
+        <div class="card" style="text-align: center; align-items: center;">
+          <div class="card-icon">💻</div>
+          <h3>Введення</h3>
+          <p style="margin-bottom:0;">отримати дані</p>
+        </div>
+        <div class="card" style="text-align: center; align-items: center;">
+          <div class="card-icon">⚙️</div>
+          <h3>Обробка</h3>
+          <p style="margin-bottom:0;">виконати команди</p>
+        </div>
+        <div class="card" style="text-align: center; align-items: center;">
+          <div class="card-icon">🖥️</div>
+          <h3>Виведення</h3>
+          <p style="margin-bottom:0;">показати результат</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Перша команда: print() -->
+    <section id="step-3">
+      <div class="section-header">
+        <span class="step-number">03</span>
+        <h2 class="section-title">Перша команда: print()</h2>
+      </div>
+      <p class="section-desc">Команда print() виводить повідомлення на екран.</p>
+
+      <div class="grid-2">
+        <!-- Interactive Code Editor -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div style="padding: 15px 20px 5px; font-weight:700; display:flex; align-items:center; gap:8px;">
+            🎮 Спробуйте редактор коду
+          </div>
+          <p style="padding: 0 20px 10px; font-size: 0.85rem; color: var(--text-muted);">
+            Змініть текст у лапках, додайте нові рядки. Кожне повідомлення виводь окремою командою print().
+          </p>
+
+          <div class="code-editor">
+            <div class="editor-header">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="filename">перша_програма.py</span>
+            </div>
+            <div class="editor-body">
+              <textarea id="pythonEditor" class="code-input">print("Привіт, я вчуся програмувати!")
+print("Мене звати Олена")
+print("Я люблю чай з м'ятою")</textarea>
+              <div class="editor-controls">
+                <button class="btn btn-run" onclick="runCode()">► Запустити</button>
+                <button class="btn btn-reset" onclick="resetCode()">Почати спочатку</button>
+              </div>
+            </div>
+            <div class="terminal-output" id="terminalOutput">Підказка: текст береться в лапки
+
+Привіт, я вчуся програмувати!
+Мене звати Олена
+Я люблю чай з м'ятою</div>
+          </div>
+        </div>
+
+        <!-- Quizzes Column -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <!-- Quiz 1 -->
+          <div class="card">
+            <h3 style="display:flex; align-items:center; gap:6px; margin-bottom:12px;">🧩 Швидка перевірка</h3>
+            <p style="font-size:0.9rem; margin-bottom:12px;">Яка команда показує текст на екрані?</p>
+            
+            <div class="quiz-option" onclick="checkQuiz1(this, false)">input("Привіт")</div>
+            <div class="quiz-option" onclick="checkQuiz1(this, true)">print("Привіт")</div>
+            <div class="quiz-option" onclick="checkQuiz1(this, false)">show("Привіт")</div>
+            <div id="quiz1-feedback" style="margin-top:5px; font-weight:700; color:var(--accent-green); display:none;">Саме так! ✓</div>
+          </div>
+
+          <!-- Quiz 2 -->
+          <div class="card">
+            <h3 style="display:flex; align-items:center; gap:6px; margin-bottom:12px;">🧩 Знайди помилку</h3>
+            <p style="font-size:0.9rem; margin-bottom:12px;">Що треба виправити, щоб команда спрацювала?</p>
+            <div style="background:#f1f5f9; padding:8px 12px; border-radius:6px; font-family:'Fira Code'; font-size:0.85rem; margin-bottom:12px; color:var(--primary-dark);">
+              print(Привіт!)
+            </div>
+
+            <div class="quiz-option" onclick="checkQuiz2(this, true)">Взяти текст у лапки</div>
+            <div class="quiz-option" onclick="checkQuiz2(this, false)">Замінити print на Python</div>
+            <div class="quiz-option" onclick="checkQuiz2(this, false)">Додати знак =</div>
+            <div id="quiz2-feedback" style="margin-top:5px; font-weight:700; color:var(--accent-green); display:none;">Вірно! Текст має бути в лапках. ✓</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. ASCII-майстерня -->
+    <section id="step-4">
+      <div class="section-header">
+        <span class="step-number">04</span>
+        <h2 class="section-title">ASCII-майстерня</h2>
+      </div>
+      <p class="section-desc">Малюнки з клавіатурних символів — це ASCII-арт. Збери власний!</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>🧑‍🎨 Оберіть деталі</h3>
+          <p style="font-size:0.85rem; margin-bottom:12px;">Натискайте кнопки — вони додадуть рядок до Вашого малюнка.</p>
+          
+          <div class="ascii-btn-group">
+            <button class="btn-chip" onclick="addAscii('cat')">🐱 Котик</button>
+            <button class="btn-chip" onclick="addAscii('cup')">☕ Чашка</button>
+            <button class="btn-chip" onclick="addAscii('tree')">🌲 Дерево</button>
+            <button class="btn-chip" onclick="addAscii('smile')">😀 Смайлик</button>
+          </div>
+          <div class="ascii-btn-group">
+            <button class="btn-chip" onclick="addAsciiLine()">↵ Новий рядок</button>
+            <button class="btn-chip" onclick="clearAscii()">Очистити</button>
+          </div>
+
+          <button class="btn btn-select" style="margin-top:auto;" onclick="generateAsciiPython()">Показати Python-код</button>
+        </div>
+
+        <div class="card">
+          <h3>👀 Попередній перегляд</h3>
+          <p style="font-size:0.85rem; margin-bottom:12px;">Потім скопіюйте створений код у Python і запустіть.</p>
+
+          <div style="background:#0f172a; color:#38bdf8; padding:16px; border-radius:8px; font-family:'Fira Code', monospace; min-height:100px; white-space:pre;" id="asciiPreview">
+ /\_/\ 
+(  _  )
+ /   \ </div>
+
+          <p style="font-size:0.8rem; color:var(--text-muted); margin: 12px 0 6px;">Ось команди print() для Вашого малюнка:</p>
+
+          <div style="background:#0f172a; color:#e2e8f0; padding:12px; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.85rem; white-space:pre;" id="asciiCode">print("  /\\_/\\  ")
+print(" (  _  ) ")
+print("  /   \\  ")</div>
+          
+          <button class="btn btn-reset" style="margin-top:12px; font-size:0.8rem; padding:6px 12px;" onclick="copyAsciiCode()">Скопіювати код</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Фінальна місія: «Моє знайомство» -->
+    <section id="step-5">
+      <div class="section-header">
+        <span class="step-number">05</span>
+        <h2 class="section-title">Фінальна місія: «Моє знайомство»</h2>
+      </div>
+      <p class="section-desc">Створіть програму з 5–7 фактів про себе та цифровим підписом.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>🪪 Заповніть картку</h3>
+          <p style="font-size:0.85rem; margin-bottom:16px;">Сторінка складе код за твоїми відповідями. Дані залишаються лише у цьому браузері.</p>
+
+          <form id="profileForm" oninput="generateProfileCode()">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Ім'я</label>
+                <input type="text" id="p_name" value="Олена">
+              </div>
+              <div class="form-group">
+                <label>Місто</label>
+                <input type="text" id="p_city" value="Київ">
+              </div>
+              <div class="form-group">
+                <label>Хобі</label>
+                <input type="text" id="p_hobby" value="малювання">
+              </div>
+              <div class="form-group">
+                <label>Мрія</label>
+                <input type="text" id="p_dream" value="подорожі">
+              </div>
+              <div class="form-group">
+                <label>Улюблений напій</label>
+                <input type="text" id="p_drink" value="чай">
+              </div>
+              <div class="form-group">
+                <label>Улюблена страва</label>
+                <input type="text" id="p_food" value="піца">
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:10px;">
+              <label>Моє місце сили</label>
+              <input type="text" id="p_place" value="карпатські гори">
+            </div>
+            <div class="form-group" style="margin-top:10px;">
+              <label>ASCII-підпис</label>
+              <input type="text" id="p_sign" value="~*~ Olena ~*~">
+            </div>
+
+            <button type="button" class="btn btn-run" style="margin-top:16px; width:100%; justify-content:center;" onclick="generateProfileCode()">✨ Створити програму</button>
+          </form>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div class="card">
+            <h3>💻 Твоя програма</h3>
+            <p style="font-size:0.85rem; margin-bottom:12px;">Скопіюйте код і запустіть його у своєму середовищі Python.</p>
+
+            <div style="background:#0f172a; color:#38bdf8; padding:16px; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.85rem; white-space:pre; min-height:180px;" id="profileCodeDisplay">print("Мене звати: Олена")
+print("Я живу у місті: Київ")
+print("Моє хобі: малювання")
+print("Я мрію про: подорожі")
+print("Мій улюблений напій: чай")
+print("Моя улюблена страва: піца")
+print("Моє місце сили: карпатські гори")
+print("Підпис: ~*~ Olena ~*~")</div>
+
+            <button class="btn btn-reset" style="margin-top:12px; align-self:flex-start;" onclick="copyProfileCode()">Скопіювати код</button>
+          </div>
+
+          <div class="card" style="background:#f5f3ff; border-color:#ddd6fe;">
+            <h3 style="color:var(--primary-dark); display:flex; align-items:center; gap:6px;">🤖 ШІ-помічник</h3>
+            <p style="font-size:0.85rem; color:#475569; margin-top:6px;">
+              Запитайте: <strong>«Запропонуй маленький проєкт на Python для початківця»</strong>. Оберіть ідею, розбери код і спробуйте запустити його.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Footer Banner -->
+    <div class="success-footer">
+      <strong>Готово! 🎉</strong> Ти вже знаєш, що таке Python і середовище розробки, написав перші команди print() і створив власну програму. Наступний крок — цікаві експерименти з кодом.
+    </div>
+
+  </main>
+
+  <footer>
+    🐍 Python для початківців · Урок 1 · Навчайся, змінюй, запускай!
+  </footer>
+
+  <script>
+    // Selection logic
+    function selectEnv(card, name) {
+      document.querySelectorAll('.card-selectable').forEach(c => {
+        c.classList.remove('selected');
+        c.querySelector('.btn-select').innerText = 'Обрати';
+        c.querySelector('.selection-result').style.display = 'none';
+      });
+      card.classList.add('selected');
+      card.querySelector('.btn-select').innerText = 'Обрано';
+      const res = card.querySelector('.selection-result');
+      res.innerText = '✓ Твій вибір: ' + name;
+      res.style.display = 'flex';
+    }
+
+    // Interactive Editor logic
+    const defaultCode = `print("Привіт, я вчуся програмувати!")\nprint("Мене звати Олена")\nprint("Я люблю чай з м'ятою")`;
+    function runCode() {
+      const code = document.getElementById('pythonEditor').value;
+      const lines = code.split('\n');
+      let output = [];
+      lines.forEach(line => {
+        const match = line.match(/^print\s*\((['"])(.*?)\1\)/);
+        if (match) {
+          output.push(match[2]);
+        } else if (line.trim() !== '') {
+          output.push('SyntaxError: Неправильний синтаксис у рядку: ' + line);
+        }
+      });
+      document.getElementById('terminalOutput').innerText = output.join('\n') || '[Програма не повернула жодного тексту]';
+    }
+
+    function resetCode() {
+      document.getElementById('pythonEditor').value = defaultCode;
+      runCode();
+    }
+
+    // Quiz logic
+    function checkQuiz1(el, isCorrect) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.quiz-option').forEach(opt => opt.className = 'quiz-option');
+      if (isCorrect) {
+        el.classList.add('correct');
+        document.getElementById('quiz1-feedback').style.display = 'block';
+      } else {
+        el.classList.add('wrong');
+        document.getElementById('quiz1-feedback').style.display = 'none';
+      }
+    }
+
+    function checkQuiz2(el, isCorrect) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.quiz-option').forEach(opt => opt.className = 'quiz-option');
+      if (isCorrect) {
+        el.classList.add('correct');
+        document.getElementById('quiz2-feedback').style.display = 'block';
+      } else {
+        el.classList.add('wrong');
+        document.getElementById('quiz2-feedback').style.display = 'none';
+      }
+    }
+
+    // ASCII Art Generator logic
+    const asciiArtMap = {
+      'cat': [' /\\_/\\ ', '(  _  )', ' /   \\ '],
+      'cup': [' |~| ', ' | | ', ' |_| '],
+      'tree': ['  /\\  ', ' /  \\ ', '/____\\', '  ||  '],
+      'smile': [' (^_^) ']
+    };
+    let currentAsciiLines = [' /\\_/\\ ', '(  _  )', ' /   \\ '];
+
+    function addAscii(type) {
+      currentAsciiLines = currentAsciiLines.concat(asciiArtMap[type]);
+      updateAsciiDisplay();
+    }
+
+    function addAsciiLine() {
+      currentAsciiLines.push(' ');
+      updateAsciiDisplay();
+    }
+
+    function clearAscii() {
+      currentAsciiLines = [];
+      updateAsciiDisplay();
+    }
+
+    function updateAsciiDisplay() {
+      document.getElementById('asciiPreview').innerText = currentAsciiLines.join('\n');
+      const pyCode = currentAsciiLines.map(l => `print("${l.replace(/\\/g, '\\\\')}")`).join('\n');
+      document.getElementById('asciiCode').innerText = pyCode;
+    }
+
+    function copyAsciiCode() {
+      const code = document.getElementById('asciiCode').innerText;
+      navigator.clipboard.writeText(code);
+      alert('Код скопійовано у буфер обміну!');
+    }
+
+    // Profile Builder logic
+    function generateProfileCode() {
+      const name = document.getElementById('p_name').value;
+      const city = document.getElementById('p_city').value;
+      const hobby = document.getElementById('p_hobby').value;
+      const dream = document.getElementById('p_dream').value;
+      const drink = document.getElementById('p_drink').value;
+      const food = document.getElementById('p_food').value;
+      const place = document.getElementById('p_place').value;
+      const sign = document.getElementById('p_sign').value;
+
+      const code = `print("Мене звати: ${name}")
+print("Я живу у місті: ${city}")
+print("Моє хобі: ${hobby}")
+print("Я мрію про: ${dream}")
+print("Мій улюблений напій: ${drink}")
+print("Моя улюблена страва: ${food}")
+print("Моє місце сили: ${place}")
+print("Підпис: ${sign}")`;
+
+      document.getElementById('profileCodeDisplay').innerText = code;
+    }
+
+    function copyProfileCode() {
+      const code = document.getElementById('profileCodeDisplay').innerText;
+      navigator.clipboard.writeText(code);
+      alert('Програму скопійовано у буфер обміну!');
+    }
+  </script>
+</body>
+</html>
